@@ -1,0 +1,92 @@
+{
+  "reference_center_px": [
+    713,
+    616
+  ],
+  "reference_dial_radius_px": 463,
+  "texture_size_px": 4096,
+  "font": "SourceHanSerifSC-VF.ttf",
+  "font_weight": 520,
+  "ring_radius_px": 2002,
+  "ring_width_px": 16,
+  "labels": [
+    {
+      "glyph": "拾",
+      "x": -0.443,
+      "y": -0.741
+    },
+    {
+      "glyph": "壹",
+      "x": -0.443,
+      "y": -0.601
+    },
+    {
+      "glyph": "拾",
+      "x": 0.0,
+      "y": -0.886
+    },
+    {
+      "glyph": "貳",
+      "x": 0.0,
+      "y": -0.743
+    },
+    {
+      "glyph": "壹",
+      "x": 0.443,
+      "y": -0.743
+    },
+    {
+      "glyph": "貳",
+      "x": 0.754,
+      "y": -0.426
+    },
+    {
+      "glyph": "參",
+      "x": 0.888,
+      "y": 0.0
+    },
+    {
+      "glyph": "肆",
+      "x": 0.754,
+      "y": 0.434
+    },
+    {
+      "glyph": "伍",
+      "x": 0.425,
+      "y": 0.739
+    },
+    {
+      "glyph": "陸",
+      "x": 0.0,
+      "y": 0.866
+    },
+    {
+      "glyph": "柒",
+      "x": -0.421,
+      "y": 0.739
+    },
+    {
+      "glyph": "捌",
+      "x": -0.734,
+      "y": 0.434
+    },
+    {
+      "glyph": "玖",
+      "x": -0.879,
+      "y": 0.0
+    },
+    {
+      "glyph": "拾",
+      "x": -0.747,
+      "y": -0.426
+    }
+  ],
+  "colors": {
+    "upper_face": "#000000",
+    "lower_face": "#f8f7f6",
+    "upper_ink": "#b9bbb7",
+    "lower_ink": "#20231f",
+    "upper_hairline": "#eef0ea",
+    "lower_hairline": "#090b09"
+  }
+}

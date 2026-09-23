@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#cbd3c9" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description" content="物语时钟：可调时区、时间与光影的三维钟表。" />
+    <title>物语时钟 · Monogatari Clock</title>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="masthead">
+        <div class="identity">
+          <span class="identity-mark" aria-hidden="true">物</span>
+          <div>
+            <p class="eyebrow">MONOGATARI / CLOCK</p>
+            <p class="identity-name">物语时钟</p>
+          </div>
+        </div>
+        <p class="masthead-note">一面墙，一枚时钟，一段可以拨动的时间。</p>
+        <div class="masthead-live"><span class="live-pulse" aria-hidden="true"></span><span id="header-status">本机时间</span></div>
+      </header>
+
+      <main class="workspace">
+        <section class="stage" aria-label="时钟展示区">
+          <div class="scene-stage" id="scene-stage">
+            <img class="model-preview" id="model-preview" alt="物语时钟正面预览" />
+            <div class="stage-grain" aria-hidden="true"></div>
+            <div class="stage-label">
+              <span class="stage-label-line"></span>
+              <span id="view-caption">墙面视图 / FRONT VIEW</span>
+            </div>
+            <div class="stage-number" aria-hidden="true">M — 01</div>
+            <div class="stage-message" id="load-status" role="status">正在载入时钟模型…</div>
+            <div class="stage-toolbar">
+              <div class="view-switch" role="group" aria-label="观察方式">
+                <button type="button" class="view-button is-active" data-view="wall" aria-pressed="true">墙面</button>
+                <button type="button" class="view-button" data-view="space" aria-pressed="false">空间</button>
+              </div>
+              <button type="button" class="camera-reset" id="camera-reset" title="重置空间视角" disabled>重置视角 <span aria-hidden="true">↗</span></button>
+            </div>
+          </div>
+          <div class="stage-footnote">
+            <span id="view-hint">正面视图 · 时钟挂在墙面</span>
+            <span>30 CM / GLB</span>
+          </div>
+        </section>
+
+        <aside class="instrument-panel" aria-label="时钟控制台">
+          <div class="panel-heading">
+            <p class="eyebrow">CLOCK / CONTROL</p>
+            <h1>让时间<br /><em>由你掌握。</em></h1>
+            <p class="panel-lead">跟随此刻，也可以停下，再从任意一刻出发。</p>
+          </div>
+
+          <section class="panel-section time-section" aria-labelledby="time-section-title">
+            <div class="section-heading"><h2 id="time-section-title">时间</h2><span class="section-index">01</span></div>
+            <div class="status-row"><span class="status-marker" id="status-marker"></span><span id="clock-status">实时同步</span></div>
+            <time class="digital-time" id="digital-time">--:--:--</time>
+            <p class="date-line" id="date-line">正在读取本机时间…</p>
+            <div class="transport">
+              <button type="button" class="primary-button" id="play-toggle"><span id="play-symbol" aria-hidden="true">Ⅱ</span><span id="play-label">暂停</span></button>
+              <button type="button" class="quiet-button" id="reset-live">回到实时 <span aria-hidden="true">↺</span></button>
+            </div>
+          </section>
+
+          <section class="panel-section" aria-labelledby="zone-section-title">
+            <div class="section-heading"><h2 id="zone-section-title">显示时区</h2><span class="section-index">02</span></div>
+            <label class="field-label" for="timezone-input">输入城市或 IANA 时区</label>
+            <div class="zone-field">
+              <input id="timezone-input" type="text" list="timezone-options" autocomplete="off" spellcheck="false" aria-describedby="zone-note zone-error" />
+              <datalist id="timezone-options"></datalist>
+              <button type="button" id="system-zone" title="使用本机时区">本机</button>
+            </div>
+            <p class="field-note" id="zone-note">默认自动检测本机时区。</p>
+            <p class="field-error" id="zone-error" role="alert" hidden>请输入有效的 IANA 时区，例如 Asia/Shanghai。</p>
+          </section>
+
+          <section class="panel-section adjustment-section" aria-labelledby="adjustment-title">
+            <div class="section-heading"><h2 id="adjustment-title">拨动指针</h2><span class="section-index">03</span></div>
+            <p class="field-note">选择一根指针，再旋转下方旋钮。拨动时会自动暂停。</p>
+            <div class="hand-switch" role="group" aria-label="选择指针">
+              <button type="button" data-hand="hour" aria-pressed="false">时针</button>
+              <button type="button" data-hand="minute" aria-pressed="true">分针</button>
+              <button type="button" data-hand="second" aria-pressed="false">秒针</button>
+            </div>
+            <div class="knob-row">
+              <button type="button" class="step-button" id="step-back" aria-label="减一格">−</button>
+              <div class="knob-wrap">
+                <div class="knob" id="time-knob" role="slider" tabindex="0" aria-label="调整分针" aria-valuemin="0" aria-valuemax="59" aria-valuenow="0" aria-valuetext="00 分">
+                  <div class="knob-surface"><span class="knob-marker"></span><span class="knob-center" aria-hidden="true"></span></div>
+                </div>
+                <p class="knob-value" id="knob-value">00 <small>分</small></p>
+              </div>
+              <button type="button" class="step-button" id="step-forward" aria-label="加一格">+</button>
+            </div>
+            <p class="control-hint">拖动旋钮，或用方向键精确调整</p>
+          </section>
+
+          <section class="panel-section light-section" aria-labelledby="lighting-title">
+            <div class="section-heading"><h2 id="lighting-title">光影</h2><span class="section-index">04</span></div>
+            <label class="light-toggle" for="light-enabled"><span>展示灯光</span><input id="light-enabled" type="checkbox" role="switch" checked /><span class="switch-track" aria-hidden="true"></span></label>
+            <div class="light-meter"><label for="light-intensity">光线强度</label><output id="light-value" for="light-intensity">100%</output></div>
+            <input id="light-intensity" class="light-range" type="range" min="0" max="200" value="100" step="1" />
+          </section>
+
+          <div class="panel-endnote"><span aria-hidden="true">✳</span><p>空间视图：移动鼠标可看到轻微视差；左键拖动旋转，中键拖动平移，滚轮缩放。</p></div>
+        </aside>
+      </main>
+
+      <footer class="page-footer"><span>MONOGATARI CLOCK / 2026</span><span>模型与表盘由本项目制作</span></footer>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

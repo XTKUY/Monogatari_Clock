@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="4096" height="4096" viewBox="0 0 4096 4096">
+  <title>Monogatari clock dial</title>
+  <desc>Financial Chinese numerals on a half-black, half-white dial.</desc>
+  <defs>
+    <clipPath id="upper"><rect width="4096" height="2048"/></clipPath>
+    <clipPath id="lower"><rect y="2048" width="4096" height="2048"/></clipPath>
+    <g id="type" font-family="Source Han Serif SC, Songti SC, serif" font-size="300" font-weight="520" text-anchor="middle" dominant-baseline="central">
+    <text x="1140.7" y="530.4">拾</text>
+    <text x="1140.7" y="817.2">壹</text>
+    <text x="2048.0" y="233.5">拾</text>
+    <text x="2048.0" y="526.3">貳</text>
+    <text x="2955.3" y="526.3">壹</text>
+    <text x="3592.2" y="1175.6">貳</text>
+    <text x="3866.6" y="2048.0">參</text>
+    <text x="3592.2" y="2936.8">肆</text>
+    <text x="2918.4" y="3561.5">伍</text>
+    <text x="2048.0" y="3821.6">陸</text>
+    <text x="1185.8" y="3561.5">柒</text>
+    <text x="544.8" y="2936.8">捌</text>
+    <text x="247.8" y="2048.0">玖</text>
+    <text x="518.1" y="1175.6">拾</text>
+    </g>
+  </defs>
+  <rect width="4096" height="4096" fill="#f8f7f6"/>
+  <rect width="4096" height="2048" fill="#000000"/>
+  <circle cx="2048" cy="2048" r="2002" fill="none" stroke="#eef0ea" stroke-width="16" clip-path="url(#upper)"/>
+  <circle cx="2048" cy="2048" r="2002" fill="none" stroke="#090b09" stroke-width="16" clip-path="url(#lower)"/>
+  <use href="#type" fill="#b9bbb7" clip-path="url(#upper)"/>
+  <use href="#type" fill="#20231f" clip-path="url(#lower)"/>
+</svg>
